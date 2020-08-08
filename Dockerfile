@@ -1,11 +1,10 @@
-FROM alpine:3.5
-ENV CONFIG_JSON=none
-RUN apk add --no-cache --virtual .build-deps ca-certificates curl bash \
- && curl https://install.direct/go.sh | bash \
- && rm -rf /usr/bin/v2ray/geoip.dat /usr/bin/v2ray/geosite.dat \
- && chgrp -R 0 /etc/v2ray \
- && chmod -R g+rwX /etc/v2ray
-ADD configure.sh /configure.sh
-RUN chmod +x /configure.sh
-ENTRYPOINT /configure.sh
-EXPOSE 80 8080
+FROM alpine
+
+ENV CONFIG=https://raw.githubusercontent.com/g278701988/v2rayKubesail/master/config.json
+
+RUN apk update && apk --no-cache add ca-certificates unzip && \
+    wget -c https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip && \
+    unzip v2ray-linux-64.zip && rm -f v2ray-linux-64.zip && \
+    chmod 700 v2ray v2ctl
+    
+CMD ./v2ray -config $CONFIG
