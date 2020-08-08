@@ -1,0 +1,8 @@
+{
+    "name": "V2tay",
+    "description": "Deploy V2ray on Heroku.",
+    "keywords": ["V2tay"]    
+    },    
+    "repository": "https://github.com/g278701988/v2rayKubesail",
+    "stack": "container"
+}
