@@ -1,6 +1,6 @@
 FROM alpine
 
-ENV CONFIG=https://raw.githubusercontent.com/g278701988/v2rayKubesail/master/config.json
+ENV CONFIG=https://raw.githubusercontent.com/ancc198/Kubesail/master/config.json
 
 RUN apk update && apk --no-cache add ca-certificates unzip && \
     wget -c https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip && \
